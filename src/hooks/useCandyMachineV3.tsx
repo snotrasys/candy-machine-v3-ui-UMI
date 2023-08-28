@@ -181,29 +181,29 @@ const candyMachine_ = await fetchCandyMachine2(umi,candyMachinePublicKey);
 const candyGuard = await fetchCandyGuard(umi, candyMachine_.mintAuthority);
 const nftMint = generateSigner(umi);
 
-// const tx  =await transactionBuilder()
-//   .add(setComputeUnitLimit(umi, { units: 800_000 }))
+ const tx  =await transactionBuilder()
+  .add(setComputeUnitLimit(umi, { units: 800_000 }))
 //   // .add(createMintWithAssociatedToken(umi, { mint: buyer, owner: buyer.publicKey }))
-//   .add(
-//     mintV2(umi, {
-//       candyMachine: candyMachine_.publicKey,      
-//       nftMint,      
-//       collectionMint: candyMachine_.collectionMint,      
-//       collectionUpdateAuthority:candyMachine_.authority,      
-//       candyGuard: candyGuard.publicKey,          
-//       group:candyGuard.groups[0].label,    
-//       mintArgs: {
-//         mintLimit: some({ id: 1 }),
-//         //@ts-ignore
-//         solPayment: some({   destination: candyGuard.groups[0].guards.solPayment.value.destination.toString() }),
+   .add(
+    mintV2(umi, {
+       candyMachine: candyMachine_.publicKey,      
+      nftMint,      
+      collectionMint: candyMachine_.collectionMint,      
+      collectionUpdateAuthority:candyMachine_.authority,      
+       candyGuard: candyGuard.publicKey,          
+      group:candyGuard.groups[0].label,    
+       mintArgs: {
+       mintLimit: some({ id: 1 }),
+        //@ts-ignore
+        solPayment: some({   destination: candyGuard.groups[0].guards.solPayment.value.destination.toString() }),
         
 //         // botTax:some({ lamports: sol(0), lastInstruction: true }),
         
-//     }
-//   }
-//     )
-//   )
-//   .sendAndConfirm(umi)
+     }
+   }
+     )
+   )
+  .sendAndConfirm(umi)
 
 
 
